@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard with Orders and Charts</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css" rel="stylesheet">
+  <!-- AOS Animation CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+  <!-- Custom CSS -->
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f8f9fa;
+    }
+    .sidebar {
+      height: 100vh;
+      background-color: #343a40;
+      color: white;
+      padding-top: 20px;
+    }
+    .sidebar a {
+      color: white;
+      text-decoration: none;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .sidebar a:hover {
+      background-color: #495057;
+      border-radius: 5px;
+    }
+    .dashboard-header {
+      background-color: #ffffff;
+      padding: 15px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    .profile-img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    .card:hover {
+      transform: scale(1.05);
+      transition: transform 0.3s ease;
+    }
+    .status-badge {
+      font-size: 0.9rem;
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
+    .status-process {
+      background-color: #ffc107;
+      color: white;
+    }
+    .status-done {
+      background-color: #28a745;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <div class="container-fluid">
+    <div class="row">
+      <!-- Sidebar -->
+      <nav class="col-md-3 col-lg-2 sidebar">
+        <h4 class="text-center mb-3"><i class="bi bi-speedometer2"></i> Dashboard</h4>
+        <a href="#overview"><i class="bi bi-house-fill"></i> Overview</a>
+        <a href="#orders"><i class="bi bi-box"></i> Orders</a>
+        <a href="#reports"><i class="bi bi-file-earmark-bar-graph-fill"></i> Reports</a>
+        <a href="#settings"><i class="bi bi-gear-fill"></i> Settings</a>
+        <a href="#logout"><i class="bi bi-box-arrow-right"></i> Logout</a>
+      </nav>
+
+      <!-- Main Content -->
+      <main class="col-md-9 col-lg-10">
+        <!-- Header -->
+        <div class="dashboard-header d-flex justify-content-between align-items-center">
+          <div class="d-flex align-items-center gap-3">
+            <h5>Welcome, User</h5>
+            <!-- Search Bar -->
+            <form class="d-flex" role="search">
+              <input class="form-control me-2" type="search" placeholder="Search Orders" aria-label="Search">
+              <button class="btn btn-outline-primary" type="submit">
+                <i class="bi bi-search"></i>
+              </button>
+            </form>
+          </div>
+
+          <!-- User Profile -->
+          <div class="dropdown">
+            <a href="#" class="d-flex align-items-center text-decoration-none" id="dropdownUser" data-bs-toggle="dropdown" aria-expanded="false">
+              <img src="WhatsApp Image 2024-11-29 at 10.15.51_46cac082.jpg" alt="User Avatar" class="profile-img">
+              <span class="ms-2 d-none d-sm-inline">John Doe</span>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownUser">
+              <li><a class="dropdown-item" href="#"><i class="bi bi-person-circle"></i> Profile</a></li>
+              <li><a class="dropdown-item" href="#"><i class="bi bi-gear"></i> Settings</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item text-danger" href="#"><i class="bi bi-box-arrow-right"></i> Logout</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Dashboard Content -->
+        <div class="container mt-4">
+          <div class="row g-3">
+            <!-- Orders Table -->
+            <div class="col-12" data-aos="fade-up">
+              <div class="card shadow-sm">
+                <div class="card-body">
+                  <h5 class="card-title">Incoming Orders</h5>
+                  <table class="table table-striped table-bordered">
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>Order ID</th>
+                        <th>Customer</th>
+                        <th>Order Date</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>1</td>
+                        <td>ORD12345</td>
+                        <td>Jane Doe</td>
+                        <td>2024-12-01</td>
+                        <td><span class="status-badge status-process">In Process</span></td>
+                        <td>
+                          <button class="btn btn-sm btn-success"><i class="bi bi-check-circle"></i> Mark as Done</button>
+                          <button class="btn btn-sm btn-danger"><i class="bi bi-trash"></i> Delete</button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>2</td>
+                        <td>ORD12346</td>
+                        <td>John Smith</td>
+                        <td>2024-12-02</td>
+                        <td><span class="status-badge status-done">Done</span></td>
+                        <td>
+                          <button class="btn btn-sm btn-success" disabled><i class="bi bi-check-circle"></i> Mark as Done</button>
+                          <button class="btn btn-sm btn-danger"><i class="bi bi-trash"></i> Delete</button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <!-- Add Order Form -->
+            <div class="col-12" data-aos="fade-up" data-aos-delay="200">
+              <div class="card shadow-sm">
+                <div class="card-body">
+                  <h5 class="card-title">Add New Order</h5>
+                  <form>
+                    <div class="mb-3">
+                      <label for="orderId" class="form-label">Order ID</label>
+                      <input type="text" class="form-control" id="orderId" required>
+                    </div>
+                    <div class="mb-3">
+                      <label for="customerName" class="form-label">Customer Name</label>
+                      <input type="text" class="form-control" id="customerName" required>
+                    </div>
+                    <div class="mb-3">
+                      <label for="orderDate" class="form-label">Order Date</label>
+                      <input type="date" class="form-control" id="orderDate" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary"><i class="bi bi-plus-circle"></i> Add Order</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sales and User Growth Charts -->
+          <div class="row mt-4">
+            <div class="col-md-6" data-aos="fade-right">
+              <div class="card shadow-sm">
+                <div class="card-body">
+                  <h5 class="card-title">Sales Chart</h5>
+                  <canvas id="salesChart"></canvas>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6" data-aos="fade-left">
+              <div class="card shadow-sm">
+                <div class="card-body">
+                  <h5 class="card-title">User Growth</h5>
+                  <canvas id="userChart"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- AOS Animation Script -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+
+  <script>
+    AOS.init();
+
+    // Sales Chart
+    var ctx = document.getElementById('salesChart').getContext('2d');
+    var salesChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+        datasets: [{
+          label: 'Sales ($)',
+          data: [1200, 1400, 1500, 1600, 1700, 1800],
+          borderColor: '#007bff',
+          fill: false,
+        }]
+      }
+    });
+
+    // User Growth Chart
+    var ctx2 = document.getElementById('userChart').getContext('2d');
+    var userChart = new Chart(ctx2, {
+      type: 'bar',
+      data: {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+        datasets: [{
+          label: 'Users',
+          data: [50, 60, 70, 80, 90, 100],
+          backgroundColor: '#28a745',
+        }]
+      }
+    });
+  </script>
+</body>
+</html>

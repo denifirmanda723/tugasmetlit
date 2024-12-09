@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Divisi Body dan Cat - Mitsubishi</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        /* Navbar Styling */
+        .navbar {
+            background-color: #212529;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-brand {
+            color: #f8f9fa !important;
+            font-size: 1.5rem;
+            font-weight: bold;
+            animation: slideIn 1s ease-in-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(-30px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        /* Sidebar Styling */
+        #sidebar {
+            background-color: #343a40;
+            color: #ffffff;
+            min-height: 100vh;
+            padding-top: 20px;
+        }
+
+        #sidebar .nav-link {
+            color: #f8f9fa;
+            margin: 0.5rem 0;
+            transition: all 0.3s;
+        }
+
+        #sidebar .nav-link:hover {
+            background-color: #495057;
+            border-radius: 0.5rem;
+            transform: scale(1.05);
+        }
+
+        #sidebar .nav-link.active {
+            background-color: #495057;
+            font-weight: bold;
+        }
+
+        /* Main Content Styling */
+        .main-content {
+            padding: 20px;
+            border-radius: 10px;
+            background: linear-gradient(to right, #ffffff, #f1f1f1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .main-header {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #212529;
+        }
+
+        /* Card Styling */
+        .card {
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Table Animations */
+        .table tbody tr {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .card { 
+            border-radius: 15px; 
+            transition: all 0.3s ease-in-out; 
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .icon { 
+            font-size: 50px;
+            color: #00aaff; 
+        }
+        .mini-chart {
+            width: 100%;
+            height: 70px;
+        }
+        .profile-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+        }
+        .animated {
+            animation: fadeIn 1.5s ease-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"><i class="fas fa-car"></i> Mitsubishi Body & Cat</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="#"><i class="fas fa-home"></i> Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link" href="ordermasuk.html"><i class="fas fa-inbox"></i> Orders</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-calendar-alt"></i> Jadwal</a></li>
+                   <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <i class="fas fa-user"></i> Admin
+    </a>
+    
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+        <li><a class="dropdown-item" href="#"><i class="fas fa-cogs"></i> Pengaturan Akun</a></li>
+        <li><a class="dropdown-item" href="login.html"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+    </ul>
+</li>
+<!-- Search Bar -->
+          <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-primary" type="submit">
+              <i class="bi bi-search">Seacrh</i>
+            </button>
+          </form>
+        </div>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container-fluid mt-4">
+        <div class="row">
+            <!-- Sidebar -->
+            <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-dark">
+                <ul class="nav flex-column">
+                    <li class="nav-item"><a class="nav-link active" href="#"><i class="fas fa-home"></i> Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-box"></i> Order Masuk</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-check"></i> Order Selesai</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-calendar"></i> Jadwal Servis</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-chart-pie"></i> Laporan</a></li>
+                </ul>
+            </nav>
+
+            <!-- Dashboard Content -->
+            <div class="col-md-10">
+                <div class="row">
+                    <!-- Mini Chart: Layanan Orders -->
+                    <div class="col-md-6">
+                        <div class="card shadow animated">
+                            <div class="card-body">
+                                <h5 class="card-title">Layanan Orders</h5>
+                                <canvas id="miniChart1" class="mini-chart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Mini Chart: Completed Orders -->
+                    <div class="col-md-6">
+                        <div class="card shadow animated">
+                            <div class="card-body">
+                                <h5 class="card-title">Completed Orders</h5>
+                                <canvas id="miniChart2" class="mini-chart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Dashboard Content -->
+        <div class="container mt-4">
+          <div class="row g-3">
+            <!-- Card 1 -->
+            <div class="col-md-4">
+              <div class="card shadow-sm">
+                <div class="card-body">
+                  <h5 class="card-title">Total Orders</h5>
+                  <p class="card-text fs-4">260</p>
+                  <i class="bi bi-cart-fill fs-2 text-primary"></i>
+                </div>
+              </div>
+            </div>
+            <!-- Card 2 -->
+            <div class="col-md-4">
+              <div class="card shadow-sm">
+                <div class="card-body">
+                  <h5 class="card-title">Total Users</h5>
+                  <p class="card-text fs-4">405</p>
+                  <i class="bi bi-people-fill fs-2 text-success"></i>
+                </div>
+              </div>
+            </div>
+            <!-- Card 3 -->
+            <div class="col-md-4">
+              <div class="card shadow-sm">
+                <div class="card-body">
+                  <h5 class="card-title">Pendapatan</h5>
+                  <p class="card-text fs-4">Rp.100.000.000</p>
+                  <i class="bi bi-currency-dollar fs-2 text-warning"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Charts Section -->
+          <div class="row mt-4">
+            <div class="col-md-6">
+              <div class="card shadow-sm">
+                <div class="card-body">
+                  <h5 class="card-title">Penjualan</h5>
+                  <canvas id="salesChart"></canvas>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="card shadow-sm">
+                <div class="card-body">
+                  <h5 class="card-title">Data pengguna</h5>
+                  <canvas id="userChart"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+
+    <!-- JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Script for Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+    
+        // Mini Chart 1 (Layanan Orders)
+        
+        const ctx1 = document.getElementById('miniChart1').getContext('2d');
+        new Chart(ctx1, {
+            type: 'line',
+            data: {
+                labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
+                datasets: [{
+                    label: 'Orders',
+                    data: [50, 70, 80, 60],
+                    fill: false,
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    tension: 0.1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: { legend: { display: false } },
+                scales: {
+                    y: { beginAtZero: true }
+                }
+            }
+        });
+
+        // Mini Chart 2 (Completed Orders)
+        const ctx2 = document.getElementById('miniChart2').getContext('2d');
+        new Chart(ctx2, {
+            type: 'line',
+            data: {
+                labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
+                datasets: [{
+                    label: 'Completed Orders',
+                    data: [10, 50, 5, 80],
+                    fill: false,
+                    borderColor: 'rgba(153, 102, 255, 1)',
+                    tension: 0.1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: { legend: { display: false } },
+                scales: { y: { beginAtZero: true } }
+            }
+        });
+        const salesCtx = document.getElementById('salesChart').getContext('2d');
+    const userCtx = document.getElementById('userChart').getContext('2d');
+    new Chart(salesCtx, {
+      type: 'line',
+      data: {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May','Jun','Jul','Aug','Sept','Oct','Nov','Des'],
+        datasets: [{
+          label: 'Penjualan Dalam 1 Thn',
+          data: [10, 20, 30, 40, 50,20,30,60,50,90,10,34],
+          borderColor: 'blue',
+          borderWidth: 2
+        }]
+      }
+    });
+    new Chart(userCtx, {
+      type: 'bar',
+      data: {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May','Jun','Jul','Aug','Sept','Oct','Nov','Des'],
+        datasets: [{
+          label: 'Total Pengguna Dalam 1 Thn',
+          data: [5, 15, 25, 35, 45,50,30,25,15,60,70,20,10],
+          backgroundColor: 'green'
+        }]
+      }
+    });
+    </script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Script Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+    </body>
+
+</html>
